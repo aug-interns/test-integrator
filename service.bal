@@ -1,17 +1,20 @@
 import ballerina/http;
+import ballerina/log;
+
+configurable string messagingService = ?;
+
+http:Client messagingServiceClient = check new(messagingService);
 
 # A service representing a network-accessible API
 # bound to port `9090`.
-service / on new http:Listener(9090) {
+service / on new http:Listener(6060) {
 
-    # A resource for generating greetings
-    # + name - the input string name
-    # + return - string name with hello message or error
-    resource function get greeting(string name) returns string|error {
-        // Send a response back to the caller.
-        if name is "" {
-            return error("name should not be empty!");
-        }
-        return "Hello, " + name;
+    resource function post setStatus() returns string|error {
+        string response = check messagingServiceClient->/testmsg.post({
+            recipient: "+945756100",
+            message: "This is a mesage from the CertificateService"
+        });
+        log:printInfo(response.toJsonString());
+        return "Success";
     }
 }
