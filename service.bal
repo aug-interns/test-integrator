@@ -11,7 +11,7 @@ service / on new http:Listener(6060) {
 
     resource function post setStatus() returns string|error {
         string response = check messagingServiceClient->/testmsg.post({
-            recipient: "+945756100",
+            recipient: "+9400000000",
             message: "This is a mesage from the CertificateService"
         });
         log:printInfo(response.toJsonString());

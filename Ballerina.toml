@@ -1,9 +1,8 @@
-[build-options]
-  observabilityIncluded = true
-
 [package]
-  distribution = "2201.6.0"
-  name = "certificaterequestservice"
-  org = "interns"
-  version = "0.1.0"
+org = "indrajithmadhumal"
+name = "testIntegrator"
+version = "0.1.0"
+distribution = "2201.7.1"
 
+[build-options]
+observabilityIncluded = true
